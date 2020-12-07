@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "9ea04b8e7aee129322ecfec6d2103cb1655f20b6cc7025c1456b1b5e038edc0b"
+            "sha256": "f2f5794b33d9162e357ab2037f776ea53ddc405a468ccde9d7c639eea10d6743"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -33,8 +33,8 @@
             "version": "==3.1.4"
         },
         "django-instant-rest": {
-            "git": "https://github.com/django-instant-rest/django-instant-rest.git",
-            "ref": "d0b1835702c87f8067711bec8c60bef6b05f4a33"
+            "editable": true,
+            "path": "./../django-instant-rest"
         },
         "faker": {
             "hashes": [
