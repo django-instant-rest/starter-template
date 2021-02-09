@@ -36,8 +36,50 @@ urlpatterns = [
         - `before` - cursor of first result when paginating backward
       - Filtering:
         - By default, django-instant-rest supports all [queryset filters supported by django](https://docs.djangoproject.com/en/3.1/topics/db/queries/#retrieving-specific-objects-with-filters).
-     
+  - Request using cURL:
+  ```
+  curl --location --request GET 'http://localhost:8000/authors?last_name__contains=R' \
+  --header 'Content-Type: application/json'
+  ```
+  - Response body:
+  ```JSON
+  {
+    "first_cursor": "MXwyMDIxLTAyLTA5IDIwOjI2OjU3LjkyODAwMCswMDowMA==",
+    "last_cursor": "MXwyMDIxLTAyLTA5IDIwOjI2OjU3LjkyODAwMCswMDowMA==",
+    "has_next_page": false,
+    "data": [
+      {
+        "id": 1,
+        "created_at": "2021-02-09T20:26:57.928000+00:00",
+        "updated_at": "2021-02-09T20:26:57.928000+00:00",
+        "first_name": "JK",
+        "last_name": "Rowling"
+      }
+    ]
+  }
+  ```
+
     
 - `POST /books` - creates a new `Book` object
+  - Request using cURL:
+  ```
+    curl --location --request POST 'http://localhost:8000/authors' \
+    --header 'Content-Type: application/json' \
+    --data-raw '{"first_name": "JK","last_name":"Rowling"}'
+  ```
+  - Response body:
+  ```JSON
+  {
+    "data": {
+        "id": 1,
+        "created_at": "2021-02-09T20:26:57.928000+00:00",
+        "updated_at": "2021-02-09T20:26:57.928000+00:00",
+        "first_name": "JK",
+        "last_name": "Rowling"
+    }
+  }
+  ```
+
+
 - `PUT /books/:id` - updates an existing `Book` object
-- `DELETE /ooks/:id` - deletes existing `Book` object
+- `DELETE /books/:id` - deletes existing `Book` object
