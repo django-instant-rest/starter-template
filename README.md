@@ -20,14 +20,14 @@ pipenv run python manage.py runserver
 ```
 # API Endpoints
 ## Resource Pattern
-django-instant-rest uses a function called `patterns.resource` which uses a model to expose CRUD functionality for any model that inherits from `RestResource` class.
+django-instant-rest uses a function called `patterns.resource()` which uses a model to expose CRUD functionality for any model that inherits from `RestResource` class.
 ```py
 # mysite/urls.py
 urlpatterns = [
     patterns.resource('authors', Author),
 ]
 ```
-- ### `POST /authors` - creates a new `Author` object
+### `POST /authors` - creates a new `Author` object
 Example request using cURL:
 ```
   curl --location --request POST 'http://localhost:8000/authors' \
@@ -62,7 +62,7 @@ Example request using cURL:
   curl --location --request GET 'http://localhost:8000/authors?last_name__contains=R' \
   --header 'Content-Type: application/json'
   ```
-Response body:
+Example response body:
   ```JSON
   {
     "first_cursor": "MXwyMDIxLTAyLTA5IDIwOjI2OjU3LjkyODAwMCswMDowMA==",
@@ -81,12 +81,12 @@ Response body:
   ```
 ---
 ### `GET /authors/:id` - retrieve an existing `Author` object
-Request using cURL:
+Example request using cURL:
   ```
   curl --location --request GET 'http://localhost:8000/authors/1' \
   --header 'Content-Type: application/json' \
   ```
-Response body:
+Example response body:
 ```JSON
 {
   "data": {
@@ -100,13 +100,13 @@ Response body:
 ```
 ---
 ### `PUT /authors/:id` - updates an existing `Author` object
-Request using cURL:
+Example request using cURL:
   ```
   curl --location --request PUT 'http://localhost:8000/authors/1' \
   --header 'Content-Type: application/json' \
   --data-raw '{"first_name":"Joanne Kathleen"}'
   ```
-Response body:
+Example response body:
 ```JSON
 {
   "data": {
@@ -120,11 +120,11 @@ Response body:
 ```
 ---
 ### `DELETE /authors/:id` - deletes existing `Author` object
-Request using cURL:
+Example request using cURL:
 ```
 curl --location --request DELETE 'http://localhost:8000/authors/1'
 ```
-Response body:
+Example response body:
 ```JSON
 {
   "data": {
