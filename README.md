@@ -38,29 +38,30 @@ urlpatterns = [
   ```JSON
   {
     "data": {
-        "id": 1,
-        "created_at": "2021-02-09T20:26:57.928000+00:00",
-        "updated_at": "2021-02-09T20:26:57.928000+00:00",
-        "first_name": "JK",
-        "last_name": "Rowling"
+      "id": 1,
+      "created_at": "2021-02-09T20:26:57.928000+00:00",
+      "updated_at": "2021-02-09T20:26:57.928000+00:00",
+      "first_name": "JK",
+      "last_name": "Rowling"
     }
   }
   ```
-- ### `GET /books` - gets list of all `Book` objects
-  -  Query Parameters: 
-      - Pagination:
-        - `first` - number of objects per page when paginating forawrd
-        - `after` - cursor of first result when paginating forward
-        - `last` - number of objects per page when paginating backward
-        - `before` - cursor of first result when paginating backward
-      - Filtering:
-        - By default, django-instant-rest supports all [queryset filters supported by django](https://docs.djangoproject.com/en/3.1/topics/db/queries/#retrieving-specific-objects-with-filters).
-  - Request using cURL:
+### `GET /books` - gets list of all `Book` objects
+Query Parameters: 
+- Pagination:
+  - `first` - number of objects per page when paginating forawrd
+  - `after` - cursor of first result when paginating forward
+  - `last` - number of objects per page when paginating backward
+  - `before` - cursor of first result when paginating backward
+- Filtering:
+  - By default, django-instant-rest supports all [queryset filters supported by django](https://docs.djangoproject.com/en/3.1/topics/db/queries/#retrieving-specific-objects-with-filters).
+
+Request using cURL:
   ```
   curl --location --request GET 'http://localhost:8000/authors?last_name__contains=R' \
   --header 'Content-Type: application/json'
   ```
-  - Response body:
+Response body:
   ```JSON
   {
     "first_cursor": "MXwyMDIxLTAyLTA5IDIwOjI2OjU3LjkyODAwMCswMDowMA==",
@@ -78,39 +79,39 @@ urlpatterns = [
   }
   ```
 ---
-- ### `PUT /books/:id` - updates an existing `Book` object
-  - Request using cURL:
+### `PUT /books/:id` - updates an existing `Book` object
+Request using cURL:
   ```
   curl --location --request PUT 'http://localhost:8000/authors/1' \
   --header 'Content-Type: application/json' \
   --data-raw '{"first_name":"Joanne Kathleen"}'
   ```
-- Response body:
+Response body:
 ```JSON
 {
-    "data": {
-        "id": 1,
-        "created_at": "2021-02-09T20:26:57.928000+00:00",
-        "updated_at": "2021-02-09T20:53:19.012390+00:00",
-        "first_name": "Joanne Kathleen",
-        "last_name": "Rowling"
-    }
+  "data": {
+    "id": 1,
+    "created_at": "2021-02-09T20:26:57.928000+00:00",
+    "updated_at": "2021-02-09T20:53:19.012390+00:00",
+    "first_name": "Joanne Kathleen",
+    "last_name": "Rowling"
+  }
 }
 ```
-- ### `DELETE /books/:id` - deletes existing `Book` object
-  - Request using cURL:
-  ```
-  curl --location --request DELETE 'http://localhost:8000/authors/1'
-  ```
-  - Response body:
-  ```JSON
-  {
-    "data": {
-        "id": null,
-        "created_at": "2021-02-09T20:26:57.928000+00:00",
-        "updated_at": "2021-02-09T20:53:19.012390+00:00",
-        "first_name": "Joanne Kathleen",
-        "last_name": "Rowling"
-    }
+### `DELETE /books/:id` - deletes existing `Book` object
+Request using cURL:
+```
+curl --location --request DELETE 'http://localhost:8000/authors/1'
+```
+Response body:
+```JSON
+{
+  "data": {
+    "id": null,
+    "created_at": "2021-02-09T20:26:57.928000+00:00",
+    "updated_at": "2021-02-09T20:53:19.012390+00:00",
+    "first_name": "Joanne Kathleen",
+    "last_name": "Rowling"
   }
-  ```
+}
+```
