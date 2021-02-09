@@ -8,13 +8,13 @@ class Author(RestResource):
     '''All models that inherit from `RestResource` will have a `created_at`
     and `updated_at` field by default.'''
 
-    name = models.CharField(max_length=255)
-    slug = models.CharField(max_length= 255, unique=True)
+    first_name = models.CharField(max_length=255)
+    last_name = models.CharField(max_length=255)
 
 
 class Book(RestResource):
-    name = models.CharField(max_length=255)
-    slug = models.CharField(max_length= 255, unique=True)
+    title = models.CharField(max_length=255)
+    synopsis = models.CharField(max_length= 1023)
     author = models.ForeignKey(Author, on_delete=models.CASCADE)
 
 
