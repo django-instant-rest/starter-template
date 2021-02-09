@@ -1,17 +1,43 @@
-# Prerequisites
+# System Dependencies
 
-- pipenv version 2020.6.2
-- faker
-- django
-- date--util
+- [Python](https://www.python.org/downloads/) >= 3 
+- [pip]() >= 20.1.1
+- [pipenv](https://pipenv.pypa.io/en/latest/) >= 2020.6.2
 
-# Instructions
+# Getting Started
 ```sh
-$ pip install django-instant-rest
-$ pipenv install
-$ pipenv run python manage.py makemigrations
-$ pipenv run python manage.py migrate
+# setting up virtual env and installing dependencies
+pipenv install
+
+# generating database migrations from django models
+pipenv run python manage.py makemigrations
+
+# applying migrations to the database
+pipenv run python manage.py migrate
+
+# starting REST API
+pipenv run python manage.py runserver
 ```
-- define models in models.py
-- plug models into urls.py
-- enjoy your database!
+# API Endpoints
+## Resource Pattern
+django-instant-rest uses a function called `patterns.resource` which uses a model to expose CRUD functionality for any model that inherits from `RestResource` class.
+```py
+# mysite/urls.py
+urlpatterns = [
+    patterns.resource('books', Book),
+]
+```
+- `GET /books` - gets list of all `Book` objects
+  -  Query Parameters: 
+      - Pagination:
+        - `first` - number of objects per page when paginating forawrd
+        - `after` - cursor of first result when paginating forward
+        - `last` - number of objects per page when paginating backward
+        - `before` - cursor of first result when paginating backward
+      - Filtering:
+        - By default, django-instant-rest supports all [queryset filters supported by django](https://docs.djangoproject.com/en/3.1/topics/db/queries/#retrieving-specific-objects-with-filters).
+     
+    
+- `POST /books` - creates a new `Book` object
+- `PUT /books/:id` - updates an existing `Book` object
+- `DELETE /ooks/:id` - deletes existing `Book` object
