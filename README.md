@@ -24,29 +24,30 @@ django-instant-rest uses a function called `patterns.resource` which uses a mode
 ```py
 # mysite/urls.py
 urlpatterns = [
-    patterns.resource('books', Book),
+    patterns.resource('authors', Author),
 ]
 ```
-- ### `POST /books` - creates a new `Book` object
-  - Request using cURL:
-  ```
-    curl --location --request POST 'http://localhost:8000/authors' \
-    --header 'Content-Type: application/json' \
-    --data-raw '{"first_name": "JK","last_name":"Rowling"}'
-  ```
-  - Response body:
-  ```JSON
-  {
-    "data": {
-      "id": 1,
-      "created_at": "2021-02-09T20:26:57.928000+00:00",
-      "updated_at": "2021-02-09T20:26:57.928000+00:00",
-      "first_name": "JK",
-      "last_name": "Rowling"
-    }
+- ### `POST /authors` - creates a new `Author` object
+Example request using cURL:
+```
+  curl --location --request POST 'http://localhost:8000/authors' \
+  --header 'Content-Type: application/json' \
+  --data-raw '{"first_name": "JK","last_name":"Rowling"}'
+```
+Example response body:
+```JSON
+{
+  "data": {
+    "id": 1,
+    "created_at": "2021-02-09T20:26:57.928000+00:00",
+    "updated_at": "2021-02-09T20:26:57.928000+00:00",
+    "first_name": "JK",
+    "last_name": "Rowling"
   }
-  ```
-### `GET /books` - gets list of all `Book` objects
+}
+```
+---
+### `GET /authors` - gets list of all `Author` objects
 Query Parameters: 
 - Pagination:
   - `first` - number of objects per page when paginating forawrd
@@ -56,7 +57,7 @@ Query Parameters:
 - Filtering:
   - By default, django-instant-rest supports all [queryset filters supported by django](https://docs.djangoproject.com/en/3.1/topics/db/queries/#retrieving-specific-objects-with-filters).
 
-Request using cURL:
+Example request using cURL:
   ```
   curl --location --request GET 'http://localhost:8000/authors?last_name__contains=R' \
   --header 'Content-Type: application/json'
@@ -79,7 +80,26 @@ Response body:
   }
   ```
 ---
-### `PUT /books/:id` - updates an existing `Book` object
+### `GET /authors/:id` - retrieve an existing `Author` object
+Request using cURL:
+  ```
+  curl --location --request GET 'http://localhost:8000/authors/1' \
+  --header 'Content-Type: application/json' \
+  ```
+Response body:
+```JSON
+{
+  "data": {
+    "id": 1,
+    "created_at": "2021-02-09T20:26:57.928000+00:00",
+    "updated_at": "2021-02-09T20:53:19.012390+00:00",
+    "first_name": "JK",
+    "last_name": "Rowling"
+  }
+}
+```
+---
+### `PUT /authors/:id` - updates an existing `Author` object
 Request using cURL:
   ```
   curl --location --request PUT 'http://localhost:8000/authors/1' \
@@ -98,7 +118,8 @@ Response body:
   }
 }
 ```
-### `DELETE /books/:id` - deletes existing `Book` object
+---
+### `DELETE /authors/:id` - deletes existing `Author` object
 Request using cURL:
 ```
 curl --location --request DELETE 'http://localhost:8000/authors/1'
