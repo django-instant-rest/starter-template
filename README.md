@@ -15,6 +15,9 @@ pipenv run python manage.py makemigrations
 # applying migrations to the database
 pipenv run python manage.py migrate
 
+# replacing the secret key in django settings
+pipenv run python scripts/replace_secret_key.py
+
 # starting REST API
 pipenv run python manage.py runserver
 ```
