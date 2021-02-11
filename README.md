@@ -136,3 +136,22 @@ Example response body:
   }
 }
 ```
+## Client Pattern
+django-instant-rest uses a function called `patterns.client()` which receives a post request whose body is a JSON object with the parameters username and password. If they are valid pair, the database will respond with a JWT used for authentication.
+
+Example request using cURL:
+```
+# mysite/urls.py
+curl --location --request POST 
+'http://localhost:8000/users/authenticate' 
+--header 'Content-Type: application/json' 
+--data-raw '{"username" : "TadCouper@gmail.com", "password" : "I have a dragon"}
+```
+Example response body:
+```JSON
+{
+    "data": {
+        "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiY3JlYXRlZF9hdCI6IjIwMjEtMDItMTFUMTg6MDk6MTkuNTU1MDUzKzAwOjAwIiwidXBkYXRlZF9hdCI6IjIwMjEtMDItMTFUMTg6MDk6MTkuNTU1MDUzKzAwOjAwIiwidXNlcm5hbWUiOiJUYWRDb3VwZXJAZ21haWwuY29tIiwiZW1haWwiOiIifQ.VnzlwphZ0Cu9QY9CNclkY-qb9HY63HiqbNi2bltyDpM"
+    }
+}
+```
