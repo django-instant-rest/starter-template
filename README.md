@@ -139,6 +139,13 @@ Example response body:
 ## Client Pattern
 django-instant-rest uses a function called `patterns.client()` which receives a post request whose body is a JSON object with the parameters username and password. If they are valid pair, the database will respond with a JWT used for authentication.
 
+url pattern:
+```py
+urlpatterns = [
+  patterns.client('users', User),
+]
+```
+
 Example request using cURL:
 ```
 # mysite/urls.py
