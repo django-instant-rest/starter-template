@@ -155,7 +155,7 @@ Example request using cURL:
 curl --location --request POST 
 'http://localhost:8000/users/authenticate' 
 --header 'Content-Type: application/json' 
---data-raw '{"username" : "example@example.com", "password" : "I have a dragon"}
+--data-raw '{"username" : "dragondude", "password" : "I have a dragon"}
 ```
 Example response body:
 ```JSON
