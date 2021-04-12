@@ -1,11 +1,17 @@
 # System Dependencies
 
-- [Python](https://www.python.org/downloads/) >= 3 
+- [python](https://www.python.org/downloads/) >= 3 
 - [pip]() >= 20.1.1
 - [pipenv](https://pipenv.pypa.io/en/latest/) >= 2020.6.2
 
 # Getting Started
 ```sh
+# clone this repository into a local directory
+git clone https://github.com/django-instant-rest/starter-template.git rest_api
+
+# navigate into the newly cloned project
+cd rest_api
+
 # setting up virtual env and installing dependencies
 pipenv install
 
