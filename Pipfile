@@ -7,7 +7,7 @@ verify_ssl = true
 
 [packages]
 django = "*"
-django-instant-rest = { editable = true, git = "https://github.com/django-instant-rest/django-instant-rest.git", ref = "747fcd3e3c5bcdcb30d143bf40fd0473420fe577" }
+django-instant-rest = { editable = true, git = "https://github.com/django-instant-rest/django-instant-rest.git", ref = "99aef01" }
 python--dateutil = "*"
 faker = "*"
 

@@ -99,7 +99,7 @@
         "django-instant-rest": {
             "editable": true,
             "git": "https://github.com/django-instant-rest/django-instant-rest.git",
-            "ref": "747fcd3e3c5bcdcb30d143bf40fd0473420fe577"
+            "ref": "99aef01"
         },
         "faker": {
             "hashes": [
